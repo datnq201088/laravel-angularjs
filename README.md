@@ -9,9 +9,10 @@
 
 
 ## Features
-* Standard RESTful API. 
-* Standard Angular feature and guide style Angular Team.
-* Chat realtime by socket.io. 
+* Angular standard guide style team.
+* API standard RESTful + JWT Authentication 
+* Chat realtime Nodejs (socket.io) 
+
 
 ## Requirement
 * PHP, Mysql, Apache or Nginx 
