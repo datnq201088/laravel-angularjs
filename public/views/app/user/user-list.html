@@ -1,0 +1,38 @@
+<div class="panel panel-default" ng-controller="UserListController as vm">
+    <div class="panel-heading">
+        List users
+        <a ui-sref="users.add">
+            Add user
+        </a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped task-table">
+            <!-- Table Headings -->
+            <thead>
+                <th>
+                    List User
+                </th>
+                <th>
+                </th>
+            </thead>
+            <!-- Table Body -->
+            <tbody>
+                <tr ng-repeat="user in vm.users">
+                    <!-- Task Name -->
+                    <td class="table-text">
+                        <div>
+                            {{ user.name }}
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="vm.deleteUser($index);" type="button">
+                            <i class="fa fa-trash">
+                            </i>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
