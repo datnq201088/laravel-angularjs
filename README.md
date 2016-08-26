@@ -13,6 +13,11 @@
 * Standard Angular feature and guide style Angular Team.
 * Chat realtime by socket.io. 
 
+## Requirement
+* PHP, Mysql, Apache or Nginx 
+* Nodejs
+* Composer 
+
 ## Installation
 * `git clone` reponsity 
 
@@ -21,6 +26,9 @@
         * `cd ~/laravel`
     
     * Config database `.env` file
+    * Run command
+        * `composer install`
+        * `npm install` 
 
     * Create database
         * `php artisan migrate`
