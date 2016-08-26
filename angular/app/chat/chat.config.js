@@ -2,17 +2,17 @@
 	'use strict';
 
 	angular
-		.module('app.login')
+		.module('app.chat')
 		.config(config);
 
 	function config($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise("/landing");
 
 		$stateProvider
-			.state('login', {
-				url: "/login",
-				templateUrl: "views/app/login/login.html",
-				controller: "LoginController",
+			.state('chat', {
+				url: "/chat",
+				templateUrl: "views/app/chat/chat.html",
+				controller: "ChatController",
 				controllerAs: "vm"		
 		})
 	}

@@ -6,15 +6,27 @@
 		.controller('LoginController', LoginController);
 
 
-	LoginController.$inject = ['LoginService'];
-	function LoginController (LoginService) {
+	LoginController.$inject = ['$state', '$http', 'AuthService'];
+	function LoginController ($state, $http,  AuthService) {
 		var vm = this;
 		vm.email = '';
 		vm.password = '';
+		vm.login  = login;
 
-		vm.login  = LoginService.login().then(function(data) {
-			vm.token = data;
-			return vm.data;
-		})
+		function login() {
+			AuthService
+					.login(vm.email, vm.password)
+					.then(
+						function(data, status, headers, config) {
+							console.log('2');
+							if (AuthService.isAuthenticated)
+							    return $state.go('users.list');
+						},
+						function (error) {
+							alert(error);
+						}
+					);
+		};
+
 	}
-});
+})();

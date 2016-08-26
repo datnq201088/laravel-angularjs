@@ -1,0 +1,34 @@
+<div class="panel-body" ng-controller="UserAddController as vm">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputPassword1">
+                Name
+            </label>
+            <input class="form-control" ng-model="vm.user.name" placeholder="Name" type="text">
+            </input>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">
+                Email
+            </label>
+            <input class="form-control" ng-model="vm.user.email" placeholder="Email" type="email">
+            </input>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">
+                Password
+            </label>
+            <input class="form-control" ng-model="vm.user.password" placeholder="Password" type="password">
+            </input>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+                <button class="btn btn-default" ng-click="vm.addUser();" type="button">
+                    <i class="fa fa-plus">
+                    </i>
+                    Add User
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -7,5 +7,6 @@
 	LandingController.$inject = [];
 	function LandingController() {
 		var vm = this;
+		console.log('landing');
 	}
-});
+})();

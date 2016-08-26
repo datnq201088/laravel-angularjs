@@ -1,13 +1,16 @@
 (function(){
-"use strict";
+    "use strict";
 
-var app = angular.module('app',
+    angular
+        .module('app',
         [
         'app.core',
-
+        
+        'app.header',
         'app.login',
-        'app.landing'
+        'app.landing',
+        'app.user',
+        'app.chat'
         ]);
     
-    angular.module('app.core', ['ui.router', 'ngMaterial', 'restangular']);
-    })();
+})();
