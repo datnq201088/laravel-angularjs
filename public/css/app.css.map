@@ -1,1 +1,1 @@
-{"version":3,"sources":["app/header/header.css","app/login/login.css"],"names":[],"mappings":"AAAA;ACAA","file":"app.css","sourceRoot":"/source/","sourcesContent":[]}
+{"version":3,"sources":["chat.css","app/header/header.css","app/login/login.css"],"names":[],"mappings":"AAAA;EACE,aAAa;CACd;;ACFD;ACAA","file":"app.css","sourcesContent":[".chat-box {\n  margin: 10px;\n}\n",null,null],"sourceRoot":"/source/"}

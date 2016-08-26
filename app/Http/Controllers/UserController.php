@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use DB;
 use Hash;
 use Illuminate\Http\Request;
-use JWTAuth;
 use Validator;
 
 class UserController extends ApiController
@@ -14,8 +12,7 @@ class UserController extends ApiController
 
     public function index()
     {
-        return JWTAuth::parseToken()->toUser();
-        $users = DB::table('users')->get();
+        $users = User::all();
         return $this->jsonResponse(0, $users);
     }
 
@@ -41,7 +38,7 @@ class UserController extends ApiController
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return response()->json($user);
+        return $this->jsonResponse(0, $user);
     }
 
     public function update(Request $request, $id)
@@ -52,6 +49,7 @@ class UserController extends ApiController
     public function delete($id)
     {
         User::destroy($id);
+        return $this->jsonResponse(0, ['id' => $id]);
     }
 
     public function getTasks($id)

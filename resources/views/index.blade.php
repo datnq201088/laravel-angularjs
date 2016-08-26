@@ -1,18 +1,22 @@
-<html ng-app="app">
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
 <head>
-<!--[if lte IE 10]>
-    <script type="text/javascript">document.location.href ='/unsupported-browser'</script>
-    <![endif]-->
-    <link rel="stylesheet" href="/css/vendor.css">
-    <link rel="stylesheet" href="/css/app.css">
+	<base href="/">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/vendor.css">
+	<link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
 
-    <md-button class="md-raised md-primary">Welcome to Angular Material</md-button>
-    <div ui-view="main"></div>
-	<div ui-view="footer"></div>
+	<div class="container">
+		<nav class="navbar navbar-default" ng-include="'views/app/header/header.html'">
+		</nav>
+			<div ui-view></div>
+		</div>
+	</div>
 
-    <script src="/js/vendor.js"></script>
-    <script src="/js/app.js"></script>
+	<script src="/js/vendor.js"></script>
+	<script src="http://localhost:9000/socket.io/socket.io.js"></script>
+	<script src="/js/app.js"></script>
 </body>
 </html>

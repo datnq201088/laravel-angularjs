@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+// use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use JWTAuth;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     /*
     |--------------------------------------------------------------------------
@@ -57,20 +58,28 @@ class AuthController extends Controller
         ]);
     }
 
-    public function authenticate(Request $request)
+    public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'The user credentials are not correct']);
+                $this->errors[] = 'Login fail';
+                return $this->jsonResponse(5);
             }
         } catch (JWTException $e) {
-            return response()->json(['error ' => 'Something went wrong', 500]);
+            $this->errors[] = 'Something went wrong';
+            return $this->jsonResponse(10);
         }
+        $user = User::where('email', $request->email)->first();
 
-        return response()->json(compact(['token']));
+        return $this->jsonResponse(0, ['token' => $token, 'id' => $user->id, 'name' => $user->name]);
 
+    }
+    public function logout(Request $request)
+    {
+        $user = JWTAuth::toUser();
+        return $this->jsonResponse(0, ['timestamp' => time()]);
     }
 
     /**

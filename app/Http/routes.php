@@ -27,12 +27,28 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'api.auth'], function () {
     Route::put('/tasks/{id}', 'TaskController@update');
     Route::delete('/tasks/{id}', 'TaskController@delete');
 
+    Route::post('/logout', 'Auth\AuthController@logout');
+
 });
 
-Route::post('/api/v1/authenticate', 'Auth\AuthController@authenticate');
+Route::post('/api/v1/login', 'Auth\AuthController@login');
 
 Route::get('/test', ['middleware' => 'test:admin,a', 'uses' => 'TestController@index']);
 
 // tasks
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/_debugbar/assets/stylesheets', [
+    'as'   => 'debugbar-css',
+    'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@css',
+]);
+
+Route::get('/_debugbar/assets/javascript', [
+    'as'   => 'debugbar-js',
+    'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js',
+]);
+
+Route::any('{path?}', function () {
+    return view("index");
+})->where("path", ".+");
